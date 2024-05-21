@@ -1,0 +1,73 @@
+
+ion-img {
+  object-fit:cover;
+  max-height: 100%;
+}
+
+ion-img.alarma-apagada-img {
+  padding: 7vw;
+  opacity: 90%;
+}
+
+ion-content.main {
+  --overflow: hidden;
+  --background : transparent !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.divisor{
+  background-color: rgb(255, 221, 134);
+}
+
+ion-fab-button.header {
+  width: 25vw !important;
+  height: 15vw !important;
+  --border-radius: 20px !important;
+  --border-color: black;
+  --border-style: solid;
+  --border-width: 2px;
+}
+
+ion-button.btn-alarma{
+  height: 100%;
+  width: -webkit-fill-available;
+  margin: 0;
+}
+
+div.text-container{
+  display: block;
+}
+
+ion-icon.custom-big {
+  height: 62vw;
+  width: 62vw;
+}
+
+div.container {
+  height: 100vh;
+  padding-top : 1vh;
+  padding-bottom : 1vh;
+  display : flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.header-row {
+  height: 15%;
+  padding-top: 1vh;
+}
+
+div.content-row {
+  height: 85%;
+  padding-top : 2vh;
+  width : 100%;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+div.yellow-container {
+  background-color: var(--ion-color-warning);
+}

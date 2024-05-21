@@ -1,0 +1,45 @@
+<ion-content class="main" id="main-content">
+    <div class="container" *ngIf="!signingOut;else spinner">
+      <div class="row header-row">
+        <div class="col-8 h-100">
+          <ion-button class="h-100 w-100" color="warning">
+            <div class="h-100 d-flex flex-column justify-content-center">
+              <h2>CRÉDITO ACTUAL</h2>
+              <p style="margin-bottom: 0 !important; font-size : 50px">{{animatedCounter}}</p>
+            </div>
+          </ion-button>
+        </div>
+        <div class="col-4 h-100" style="padding-left: 0 !important;">
+          <ion-button (click)="onBorrarCreditosBtnClicked()" class="h-100 w-100" color="danger">
+            <div>
+              <h4>Borrar</h4>
+              <h4>Crédito</h4>
+            </div>
+          </ion-button>
+        </div>   
+      </div>
+      <div class="row content-row">
+        <div class="col-12" style="padding : 0;">
+          <ion-button class="btn-alarma" [class]="" (click)="onQrScanBtnClicked()" color="tertiary">
+            <div class="text-container">
+              <h1 style="font-size: 50px;">CARGAR</h1>
+              <br>
+              <h1 class="mb-5"style="font-size: 50px;">CRÉDITO</h1><br>
+              <ion-icon class="custom-big" name="qr-code-outline" size="large"></ion-icon>
+            </div>
+          </ion-button>
+        </div>
+      </div>
+      <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+        <ion-fab-button (click)="handleSignOut()" color="secondary" class="header">
+          <p style="font-size: 30px; margin-bottom: 0;">SALIR</p>
+        </ion-fab-button>
+      </ion-fab>
+    </div>
+    <ng-template #spinner>
+      <div class="signin">
+        <app-spinner [optionalMessage]="'Cerrando Sesión'"></app-spinner>
+      </div>
+    </ng-template>
+</ion-content>
+

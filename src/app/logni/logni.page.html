@@ -1,0 +1,58 @@
+<ion-content [fullscreen]="true" class="main" #loginRoot>
+    <div *ngIf="!attemptingSingIn;else spinner" class="d-flex flex-column p-4 justify-content-start">
+      <div class="w-100">
+        <div class="row mt-2">
+          <ion-img src=".\assets\icon\tarjeta-de-credito_icon.png" style="height: 28vh;"></ion-img>
+        </div>
+        <div class="row align-self-center mt-3">
+          <div class="form-container">
+            <form [formGroup]="loginForm" (ngSubmit)="handleLogIn()" class="px-2 py-3">
+              <ion-item class="mb-4" lines="full" >
+                <ion-label position="floating" style="color : var(--ion-color-light-shade)">Correo electrónico</ion-label>
+                <ion-input  type="email" placeholder="nombre.apellido@dominio.com" formControlName="email" legacy="true"></ion-input>
+                <ion-note *ngIf="loginForm.get('email')!.touched" slot="error">formato inválido de email</ion-note>
+              </ion-item>
+              <ion-item class="mb-5" lines="full">
+                <ion-label position="floating" style="color : var(--ion-color-light-shade)">Contraseña</ion-label>
+                <ion-input [type]="hidePassword? 'password':'text'" placeholder="**********" formControlName="password" legacy="true"></ion-input>
+                <ion-button size="default" slot="end" fill="clear" (click)="togglePasswordVisibility()" class="pt-3 icon-button">
+                  <ion-icon [name]="hidePassword ? 'eye-off-outline' : 'eye-outline' " color="success" class="iconEye"></ion-icon>
+                </ion-button>
+              </ion-item>
+              <div class="signup-text mb-3">
+                ¿No tenés una cuenta? &nbsp; 
+                <a class="mat-subheading-2" (click)="goToRegister()">
+                  <u class="font-weight-bold" style="color : #0f0">Registrate</u>
+                </a>
+              </div>
+              <div class="mt-4">
+                <ion-button class="login-button mt-4 mb-3" color="success" strong="true" type="submit" expand="block" [disabled]="!loginForm.valid || invalidCredentials">
+                  <h3 style="margin: 0;">Ingresar</h3>
+                </ion-button>
+                <div class="separator mb-3 col-10 offset-1">O</div>
+                <div class="chips container">
+                  <div class="row">
+                    <div class="col-6" *ngFor="let mockUser of mockUsersButtons">
+                      <ion-chip (click)="loadLoginForm(mockUser)">
+                        <ion-avatar>
+                          <img [src]="mockUser.backgroundImg" alt="">
+                        </ion-avatar>
+                        <ion-label>{{mockUser.label}}</ion-label>
+                      </ion-chip>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div> 
+    </div>
+  <ng-template #spinner>
+    <div class="signin">
+      <app-spinner [optionalMessage]="'Ingresando'"></app-spinner>
+    </div>
+  </ng-template>
+</ion-content>
+  
+  
